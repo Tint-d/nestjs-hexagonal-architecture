@@ -40,7 +40,8 @@ describe('GetUserUseCase', () => {
 
     expect(result).toBe(existingUser);
     expect(findById).toHaveBeenCalledTimes(1);
-    const idArg = findById.mock.calls[0][0];
+    const calls = findById.mock.calls as Array<[UserId]>;
+    const idArg = calls[0][0];
     expect(idArg).toBeInstanceOf(UserId);
     expect(idArg.getValue()).toBe('user-123');
   });
